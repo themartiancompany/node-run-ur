@@ -8,7 +8,7 @@ _git="false"
 _pkg=evmfs
 pkgname="${_pkg}"
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="dede2f0768dd4b5ebca1fca6b59f0d00c74873c5"
+_commit="3f2c9264f0d3870f77b85ede84a1db9b2df64691"
 pkgrel=1
 _pkgdesc=(
   "Ethereum Virtual Machine network file system."
