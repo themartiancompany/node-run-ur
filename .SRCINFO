@@ -15,6 +15,6 @@ pkgbase = evmfs
 	source = evmfs-8edbec957d8184df1891ebeb401806af63773ff0.zip::https://github.com/themartiancompany/evmfs/archive/8edbec957d8184df1891ebeb401806af63773ff0.zip
 	validpgpkeys = 97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9
 	validpgpkeys = DD6732B02E6C88E9E27E2E0D5FC6652B9D9A6C01
-	sha256sums = cc0885a5bc57f62722088e237a11fac355511bdcb8e5163816edbf052c352689
+	sha256sums = dfab064ba34be4558267eaf8bee8156d509c95c32569a13c25d094149aacb2c3
 
 pkgname = evmfs
