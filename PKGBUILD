@@ -28,7 +28,6 @@ depends=(
   "libcrash-bash"
   "libcrash-js"
   "nodejs-ethers"
-  "solidity-compiler"
 )
 _os="$( \
   uname \
@@ -44,6 +43,7 @@ optdepends=(
   )
 makedepends=(
   make
+  solidity-compiler
 )
 checkdepends=(
   "shellcheck"
