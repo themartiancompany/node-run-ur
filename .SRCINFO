@@ -12,9 +12,9 @@ pkgbase = evmfs
 	depends = libcrash-bash
 	depends = libcrash-js
 	depends = nodejs-ethers
-	source = evmfs-0cf12bb8335b1bba23f265dbbe70c806422667ae.zip::https://github.com/themartiancompany/evmfs/archive/0cf12bb8335b1bba23f265dbbe70c806422667ae.zip
+	source = evmfs-1ed0e402090b4f63b5af24b6ad9288170b5901ae.zip::https://github.com/themartiancompany/evmfs/archive/1ed0e402090b4f63b5af24b6ad9288170b5901ae.zip
 	validpgpkeys = 97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9
 	validpgpkeys = DD6732B02E6C88E9E27E2E0D5FC6652B9D9A6C01
-	sha256sums = 75fa5862143f15b81413c37357d85893930e031cc51c987349a619cbefdc8356
+	sha256sums = a5d2cfd81112e9f8adcab183d1ad46b7d296993a362cd49fda7b834ce1b0793b
 
 pkgname = evmfs
