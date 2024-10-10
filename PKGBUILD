@@ -7,8 +7,8 @@ _offline="false"
 _git="false"
 _pkg=evmfs
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1"
-_commit="1ed0e402090b4f63b5af24b6ad9288170b5901ae"
+pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
+_commit="00f349cc9e12c98bd6e94e84c1276dc2fad640a8"
 pkgrel=1
 _pkgdesc=(
   "Ethereum Virtual Machine network file system."
@@ -72,7 +72,7 @@ _tarname="${pkgname}-${_tag}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum="a5d2cfd81112e9f8adcab183d1ad46b7d296993a362cd49fda7b834ce1b0793b"
+    _sum="d8ae1169f559927a5a15349c523fd5d6fc0376eaa7b89e8c1dad5eeee237a5f6"
   fi && \
     source+=(
       "${_tar}"
