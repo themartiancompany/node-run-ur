@@ -21,13 +21,14 @@ _http="https://github.com"
 _ns="themartiancompany"
 url="${_http}/${_ns}/${pkgname}"
 license=(
-  AGPL3
+  'AGPL3'
 )
 depends=(
+  "evm-contracts-tools"
   "evm-wallet"
+  "encoding-tools"
   "libcrash-bash"
   "libcrash-js"
-  "nodejs-ethers"
 )
 _os="$( \
   uname \
@@ -42,8 +43,8 @@ optdepends=(
   optdepends+=(
   )
 makedepends=(
-  make
-  solidity-compiler
+  'make'
+  'solidity-compiler'
 )
 checkdepends=(
   "shellcheck"
@@ -92,6 +93,13 @@ check() {
   make \
     -k \
     check
+}
+
+build() {
+  cd \
+    "${_tarname}"
+  make \
+    all
 }
 
 package() {
