@@ -5,6 +5,9 @@
 
 _offline="false"
 _git="false"
+_solc="true"
+_hardhat="false"
+_proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
 pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
@@ -46,6 +49,15 @@ makedepends=(
   'make'
   'solidity-compiler'
 )
+if [[ "${_solc}" == "true" ]]; then
+  makedepends+=(
+    "solidity0.8.24"
+  )
+elif [[ "${_hardhat}" == "true" ]]; then
+  makedepends+=(
+    "hardhat"
+  )
+fi
 checkdepends=(
   "shellcheck"
 )
