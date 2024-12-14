@@ -53,7 +53,8 @@ if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
     "solidity=0.8.24"
   )
-elif [[ "${_hardhat}" == "true" ]]; then
+fi
+if [[ "${_hardhat}" == "true" ]]; then
   makedepends+=(
     "hardhat"
   )
