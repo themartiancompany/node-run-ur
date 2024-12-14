@@ -51,7 +51,7 @@ makedepends=(
 )
 if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
-    "solidity0.8.24"
+    "solidity=0.8.24"
   )
 elif [[ "${_hardhat}" == "true" ]]; then
   makedepends+=(
@@ -110,17 +110,37 @@ check() {
 build() {
   cd \
     "${_tarname}"
-  make \
-    all
+  if [[ "${_solc}" == "true" ]]; then
+    SOLIDITY_COMPILER_BACKEND="solc" \
+    make \
+      all
+  fi
+  if [[ "${_hardhat}" == "true" ]]; then
+    SOLIDITY_COMPILER_BACKEND="hardhat" \
+    make \
+     all
+  fi
 }
 
 package() {
   cd \
     "${_tarname}"
   make \
-    PREFIX="/usr" \
     DESTDIR="${pkgdir}" \
+    PREFIX="/usr" \
     install
+  if [[ "${_solc}" == "true" ]]; then
+    make \
+      DESTDIR="${pkgdir}" \
+      PREFIX="/usr" \
+      install-contracts-deployments-solc
+  fi
+  if [[ "${_hardhat}" == "true" ]]; then
+    make \
+      DESTDIR="${pkgdir}" \
+      PREFIX="/usr" \
+      install-contracts-deployments-hardhat
+  fi
 }
 
 # vim: ft=sh syn=sh et
