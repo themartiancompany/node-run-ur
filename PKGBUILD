@@ -6,12 +6,12 @@
 _offline="false"
 _git="false"
 _solc="true"
-_hardhat="false"
+_hardhat="true"
 _proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
-_commit="00f349cc9e12c98bd6e94e84c1276dc2fad640a8"
+pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1.1.1"
+_commit="7e2416f1154fe3548cd5959e9e1d20351a17fa02"
 pkgrel=1
 _pkgdesc=(
   "Ethereum Virtual Machine network file system."
@@ -27,6 +27,8 @@ license=(
   'AGPL3'
 )
 depends=(
+  "evm-chains-explorers"
+  "evm-chains-info"
   "evm-contracts-tools"
   "evm-wallet"
   "encoding-tools"
@@ -86,7 +88,7 @@ _tarname="${pkgname}-${_tag}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum="d8ae1169f559927a5a15349c523fd5d6fc0376eaa7b89e8c1dad5eeee237a5f6"
+    _sum='c8a825612d5466e4d316d402b344fddef4b9270396e5b56cd9e91cd445b714fc'
   fi && \
     source+=(
       "${_tar}"
