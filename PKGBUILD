@@ -11,7 +11,7 @@ _proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
 pkgver="0.0.0.0.0.0.0.0.1.1.1.1"
-_commit="0efe1db55275e9e4fea763e3c8dc6ba6a6033b82"
+_commit="55c066c8feaa9a979054650108f5b2d4e5cf64c2"
 pkgrel=1
 _pkgdesc=(
   "Ethereum Virtual Machine network file system."
@@ -72,30 +72,31 @@ _tag_name="commit"
 _tarname="${pkgname}-${_tag}"
 [[ "${_offline}" == "true" ]] && \
   _url="file://${HOME}/${pkgname}"
-[[ "${_git}" == true ]] && \
+if [[ "${_git}" == true ]]; then
   makedepends+=(
     "git"
-  ) && \
+  )
   source+=(
     "${_tarname}::git+${_url}#${_tag_name}=${_tag}?signed"
-  ) && \
+  )
   sha256sums+=(
     SKIP
   )
-[[ "${_git}" == false ]] && \
+elif [[ "${_git}" == false ]]; then
   if [[ "${_tag_name}" == 'pkgver' ]]; then
     _tar="${_tarname}.tar.gz::${_url}/archive/refs/tags/${_tag}.tar.gz"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='22714f64adbf70a5fa0a9dbbb0e199479b8a1ee42ca9af8cd69be19e1d3effbd'
-  fi && \
-    source+=(
-      "${_tar}"
-    ) && \
-    sha256sums+=(
-      "${_sum}"
-    )
+    _sum='9dcd291a18625c17979e6fdcf7ceca8cc90a6d9a8509bdd9dbcd9a24bfb9a034'
+  fi
+  source+=(
+    "${_tar}"
+  )
+  sha256sums+=(
+    "${_sum}"
+  )
+fi
 validpgpkeys=(
   # Truocolo <truocolo@aol.com>
   '97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9'
