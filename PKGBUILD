@@ -6,12 +6,12 @@
 _offline="false"
 _git="false"
 _solc="true"
-_hardhat="true"
+_hardhat="false"
 _proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1"
-_commit="d8efab70feb44ef8078c26c8b92e46b84ae0a2ad"
+pkgver="0.0.0.0.0.0.0.0.1.1.1.1"
+_commit="0efe1db55275e9e4fea763e3c8dc6ba6a6033b82"
 pkgrel=1
 _pkgdesc=(
   "Ethereum Virtual Machine network file system."
@@ -48,8 +48,8 @@ optdepends=(
   optdepends+=(
   )
 makedepends=(
+  'evm-make'
   'make'
-  'solidity-compiler'
 )
 if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
@@ -88,7 +88,7 @@ _tarname="${pkgname}-${_tag}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='db4dd48053b63598b1b4879c7416aa6d70e3b5d2c77e0017db811d65b93a0cbf'
+    _sum='22714f64adbf70a5fa0a9dbbb0e199479b8a1ee42ca9af8cd69be19e1d3effbd'
   fi && \
     source+=(
       "${_tar}"
