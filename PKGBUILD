@@ -27,13 +27,12 @@ license=(
   'AGPL3'
 )
 depends=(
-  "evm-chains-explorers"
-  "evm-chains-info"
   "evm-contracts-tools"
   "evm-wallet"
   "encoding-tools"
   "libcrash-bash"
   "libcrash-js"
+  "libevm"
 )
 _os="$( \
   uname \
