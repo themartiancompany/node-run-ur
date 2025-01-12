@@ -1,20 +1,24 @@
 pkgbase = evmfs
 	pkgdesc = Ethereum Virtual Machine network file system.
-	pkgver = 0.0.0.0.0.0.0.0.0.1.1.1.1.1.1
+	pkgver = 0.0.0.0.0.0.0.0.1.1.1.1.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/evmfs
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
+	makedepends = evm-make
 	makedepends = make
-	makedepends = solidity-compiler
+	makedepends = solidity=0.8.24
+	makedepends = hardhat
+	depends = evm-contracts-tools
 	depends = evm-wallet
+	depends = encoding-tools
 	depends = libcrash-bash
 	depends = libcrash-js
-	depends = nodejs-ethers
-	source = evmfs-00f349cc9e12c98bd6e94e84c1276dc2fad640a8.zip::https://github.com/themartiancompany/evmfs/archive/00f349cc9e12c98bd6e94e84c1276dc2fad640a8.zip
+	depends = libevm
+	source = evmfs-396e0d60eaa5e77d1261f284801c975eeb1c50e5.zip::https://github.com/themartiancompany/evmfs/archive/396e0d60eaa5e77d1261f284801c975eeb1c50e5.zip
 	validpgpkeys = 97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9
 	validpgpkeys = DD6732B02E6C88E9E27E2E0D5FC6652B9D9A6C01
-	sha256sums = d8ae1169f559927a5a15349c523fd5d6fc0376eaa7b89e8c1dad5eeee237a5f6
+	sha256sums = b6d0a0fd65157d01edecf6ef96719a19e9d37ae01b868152b68098465487b78e
 
 pkgname = evmfs
