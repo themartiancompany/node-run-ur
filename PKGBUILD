@@ -20,8 +20,23 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
+_os="$( \
+  uname \
+    -o)"
+_evmfs_available="$( \
+  command \
+    -v \
+    "evmfs" || \
+    true)"
+if [[ "${_evmfs_available}" != "" ]]; then
+  _evmfs="true"
+elif [[ "${_evmfs_available}" == "" ]]; then
+  _evmfs="false"
+fi
 _offline="false"
 _git="false"
 _solc="true"
@@ -29,15 +44,19 @@ _hardhat="true"
 _proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1"
-_commit="80c974462b0d528570d39929c57f7ee85ad6d5f4"
+pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1"
+_commit="f1884a6fbc082f1cf8d770ffc72c79b9d5d373c1"
 pkgrel=1
 _pkgdesc=(
-  "Ethereum Virtual Machine network file system."
+  "Reference implementation of the"
+  "Ethereum Virtual Machine file system,"
+  "the internet uncensorable, unalterable,"
+  "undeletable, distributed, unstoppable"
+  "file system and network protocol."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
-  any
+  'any'
 )
 _http="https://github.com"
 _ns="themartiancompany"
@@ -53,18 +72,17 @@ depends=(
   "libcrash-js"
   "libevm"
 )
-_os="$( \
-  uname \
-    -o)"
-[[ "${_os}" != "GNU/Linux" ]] && \
-[[ "${_os}" == "Android" ]] && \
+if [[ "${_os}" != "GNU/Linux" ]] && \
+   [[ "${_os}" == "Android" ]]; then
   depends+=(
   )
+fi
 optdepends=(
 )
-[[ "${_os}" == 'Android' ]] && \
+if [[ "${_os}" == 'Android' ]]; then
   optdepends+=(
   )
+fi
 makedepends=(
   'evm-make'
   'make'
@@ -88,33 +106,51 @@ _url="${url}"
 _tag="${_commit}"
 _tag_name="commit"
 _tarname="${pkgname}-${_tag}"
-[[ "${_offline}" == "true" ]] && \
+if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
-if [[ "${_git}" == true ]]; then
+fi
+_evmfs_network="100"
+_evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
+_evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
+_archive_sum='4e20bf593c79b0eb99fae1ef2a42419a43a35e5ffb2ecd4739ad933af08f1ce2'
+_evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
+_evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
+_archive_sig_sum="16f3f1f655f8cf6292b7c26939d78ca9a1fb7a9b7a443405f7d6f863034808c3"
+_archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
+_archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
+if [[ "${_evmfs}" == true ]]; then
+  makedepends+=(
+    "evmfs"
+  )
+  _src="${_evmfs_archive_src}"
+  _sum="${_archive_sum}"
+  source+=(
+    "${_archive_sig_src}"
+  )
+  sha256sums+=(
+    "${_archive_sig_sum}"
+  )
+elif [[ "${_git}" == true ]]; then
   makedepends+=(
     "git"
   )
-  source+=(
-    "${_tarname}::git+${_url}#${_tag_name}=${_tag}?signed"
-  )
-  sha256sums+=(
-    SKIP
-  )
+  _src="${_tarname}::git+${_url}#${_tag_name}=${_tag}?signed"
+  _sum="SKIP"
 elif [[ "${_git}" == false ]]; then
   if [[ "${_tag_name}" == 'pkgver' ]]; then
-    _tar="${_tarname}.tar.gz::${_url}/archive/refs/tags/${_tag}.tar.gz"
+    _src="${_tarname}.tar.gz::${_url}/archive/refs/tags/${_tag}.tar.gz"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
-    _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='51e1bdde30183ae5d6e67dd250c24c6f6fa54b8cfdcb5a13de9f5ce23321bb62'
+    _src="${_tarname}.zip::${_url}/archive/${_commit}.zip"
+    _sum="${_archive_sum}"
   fi
-  source+=(
-    "${_tar}"
-  )
-  sha256sums+=(
-    "${_sum}"
-  )
 fi
+source+=(
+  "${_src}"
+)
+sha256sums+=(
+  "${_sum}"
+)
 validpgpkeys=(
   # Truocolo <truocolo@aol.com>
   '97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9'
