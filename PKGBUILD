@@ -44,8 +44,8 @@ _hardhat="true"
 _proj="hip"
 _pkg=evmfs
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1"
-_commit="f1884a6fbc082f1cf8d770ffc72c79b9d5d373c1"
+pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1.1"
+_commit="5cbc9740fd594c9d94967f793667ec4957af2971"
 pkgrel=1
 _pkgdesc=(
   "Reference implementation of the"
@@ -112,10 +112,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
-_archive_sum='4e20bf593c79b0eb99fae1ef2a42419a43a35e5ffb2ecd4739ad933af08f1ce2'
+_archive_sum='865aa12f9463f515d393a3ed09d1737236495a8cabb452f9d8b9c6b1922430ee'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="16f3f1f655f8cf6292b7c26939d78ca9a1fb7a9b7a443405f7d6f863034808c3"
+_archive_sig_sum="ed75fd42b84d6d9bba18161daf87a3b4de9a7b5f2c8823dc1e85e895226afc37"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == true ]]; then
