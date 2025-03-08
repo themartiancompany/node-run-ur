@@ -42,6 +42,7 @@ _git="false"
 _solc="true"
 _hardhat="true"
 _proj="hip"
+_py="python"
 _pkg=evmfs
 pkgname="${_pkg}"
 pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1.1"
@@ -86,10 +87,13 @@ fi
 makedepends=(
   'evm-make'
   'make'
+  "${_py}-docutils"
 )
 if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
+    "solidity=0.7.5"
     "solidity=0.8.24"
+    "solidity=0.8.28"
   )
 fi
 if [[ "${_hardhat}" == "true" ]]; then
