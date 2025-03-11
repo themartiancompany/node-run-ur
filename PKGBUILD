@@ -66,9 +66,10 @@ depends=(
   "libcrash-bash"
   "${_node}"
 )
-if [[ "${_os}" != "GNU/Linux" ]] && \
-   [[ "${_os}" == "Android" ]]; then
+if [[ "${_os}" == "GNU/Linux" ]] && \
+   [[ "${_os}" != "Android" ]]; then
   depends+=(
+    "npm"
   )
 fi
 optdepends=(
