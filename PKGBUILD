@@ -32,28 +32,25 @@ _evmfs_available="$( \
     -v \
     "evmfs" || \
     true)"
-if [[ "${_evmfs_available}" != "" ]]; then
-  _evmfs="true"
-elif [[ "${_evmfs_available}" == "" ]]; then
-  _evmfs="false"
+if [[ ! -v "_evmfs" ]]; then
+  if [[ "${_evmfs_available}" != "" ]]; then
+    _evmfs="true"
+  elif [[ "${_evmfs_available}" == "" ]]; then
+    _evmfs="false"
+  fi
 fi
 _offline="false"
 _git="false"
-_solc="true"
-_hardhat="true"
 _proj="hip"
 _py="python"
-_pkg=evmfs
+_node="nodejs"
+_pkg=node-run
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1.1"
-_commit="5cbc9740fd594c9d94967f793667ec4957af2971"
+pkgver="0.0.0.0.0.0.0.0.0.1"
+_commit="c3ba923173824d3c2c67143c64f6ae65c7b885bd"
 pkgrel=1
 _pkgdesc=(
-  "Reference implementation of the"
-  "Ethereum Virtual Machine file system,"
-  "the internet uncensorable, unalterable,"
-  "undeletable, distributed, unstoppable"
-  "file system and network protocol."
+  "Run system-wide Node.js install."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
@@ -66,12 +63,8 @@ license=(
   'AGPL3'
 )
 depends=(
-  "evm-contracts-tools"
-  "evm-wallet"
-  "encoding-tools"
   "libcrash-bash"
-  "libcrash-js"
-  "libevm"
+  "${_node}"
 )
 if [[ "${_os}" != "GNU/Linux" ]] && \
    [[ "${_os}" == "Android" ]]; then
@@ -85,22 +78,9 @@ if [[ "${_os}" == 'Android' ]]; then
   )
 fi
 makedepends=(
-  'evm-make'
   'make'
   "${_py}-docutils"
 )
-if [[ "${_solc}" == "true" ]]; then
-  makedepends+=(
-    "solidity=0.7.5"
-    "solidity=0.8.24"
-    "solidity=0.8.28"
-  )
-fi
-if [[ "${_hardhat}" == "true" ]]; then
-  makedepends+=(
-    "hardhat"
-  )
-fi
 checkdepends=(
   "shellcheck"
 )
@@ -115,11 +95,12 @@ if [[ "${_offline}" == "true" ]]; then
 fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
-_evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
-_archive_sum='865aa12f9463f515d393a3ed09d1737236495a8cabb452f9d8b9c6b1922430ee'
+_evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
+_archive_sum='03bd313b665177e970645e85b7a4e3babfb74bf1915eb326211081a856d03a15'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
 _archive_sig_sum="ed75fd42b84d6d9bba18161daf87a3b4de9a7b5f2c8823dc1e85e895226afc37"
+_archive_sig_sum="03bd313b665177e970645e85b7a4e3babfb74bf1915eb326211081a856d03a15"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == true ]]; then
@@ -171,21 +152,6 @@ check() {
     check
 }
 
-build() {
-  cd \
-    "${_tarname}"
-  if [[ "${_solc}" == "true" ]]; then
-    SOLIDITY_COMPILER_BACKEND="solc" \
-    make \
-      all
-  fi
-  if [[ "${_hardhat}" == "true" ]]; then
-    SOLIDITY_COMPILER_BACKEND="hardhat" \
-    make \
-     all
-  fi
-}
-
 package() {
   cd \
     "${_tarname}"
@@ -193,18 +159,6 @@ package() {
     DESTDIR="${pkgdir}" \
     PREFIX="/usr" \
     install
-  if [[ "${_solc}" == "true" ]]; then
-    make \
-      DESTDIR="${pkgdir}" \
-      PREFIX="/usr" \
-      install-contracts-deployments-solc
-  fi
-  if [[ "${_hardhat}" == "true" ]]; then
-    make \
-      DESTDIR="${pkgdir}" \
-      PREFIX="/usr" \
-      install-contracts-deployments-hardhat
-  fi
 }
 
 # vim: ft=sh syn=sh et
