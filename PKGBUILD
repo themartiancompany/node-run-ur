@@ -46,8 +46,8 @@ _py="python"
 _node="nodejs"
 _pkg=node-run
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.0.1"
-_commit="c3ba923173824d3c2c67143c64f6ae65c7b885bd"
+pkgver="0.0.0.0.0.0.0.0.0.1.1.1"
+_commit="385ee81b79b2d7f49da1fad01406a73a9baf723c"
 pkgrel=1
 _pkgdesc=(
   "Run system-wide Node.js install."
@@ -96,11 +96,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='03bd313b665177e970645e85b7a4e3babfb74bf1915eb326211081a856d03a15'
+_archive_sum='d38d5da2679211e281e5361bbab59d24f212f4ca94c6ea5e3ed8b867a9128798'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="ed75fd42b84d6d9bba18161daf87a3b4de9a7b5f2c8823dc1e85e895226afc37"
-_archive_sig_sum="03bd313b665177e970645e85b7a4e3babfb74bf1915eb326211081a856d03a15"
+_archive_sig_sum="77181a0d8bf0c5140653bc02995aad48e148d3b0364ef2a117557a92eb9ed406"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == true ]]; then
