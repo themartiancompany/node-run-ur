@@ -44,10 +44,26 @@ _git="false"
 _proj="hip"
 _py="python"
 _node="nodejs"
+if [[ "${_os}" == "Android" ]]; then
+  # This will have to be removed when we
+  # will have non-termux missing-provides bugged
+  # life and dogeos android nodejs and nodejs-lts
+  # builds.
+  _node_lts="$( \
+    pacman \
+      -Q \
+      "nodejs-lts" | \
+      awk \
+        '{print $1}' \
+      2>/dev/null)"
+  if [[ "${_node_lts}" != "" ]]; then
+    _node="nodejs-lts"
+  fi
+fi
 _pkg=node-run
 pkgname="${_pkg}"
-pkgver="0.0.0.0.0.0.0.0.0.1.1.1"
-_commit="385ee81b79b2d7f49da1fad01406a73a9baf723c"
+pkgver="0.0.0.0.0.0.0.0.1"
+_commit="25e3780035ffedf321ef7c201bcf0137166d31fd"
 pkgrel=1
 _pkgdesc=(
   "Run system-wide Node.js install."
@@ -97,10 +113,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='d38d5da2679211e281e5361bbab59d24f212f4ca94c6ea5e3ed8b867a9128798'
+_archive_sum='c8160d92be4f33832899951f3717ff81397adebae00366488c9e47407903cbe5'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="77181a0d8bf0c5140653bc02995aad48e148d3b0364ef2a117557a92eb9ed406"
+_archive_sig_sum='fcce298f0aafc8d11e4a1a5a4211eab6e42297e96fef9cf4df989eae4a16f87d'
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == true ]]; then
