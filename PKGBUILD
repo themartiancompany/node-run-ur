@@ -234,7 +234,7 @@ package_node-run() {
     "${_tarname}"
   make \
     "${_make_opts[@]}" \
-    install-scripts
+    "install-${_pkg}"
   install \
     -Dm644 \
     "COPYING" \
@@ -260,7 +260,7 @@ package_node-run-docs() {
   make \
     "${_make_opts[@]}" \
     install-doc \
-    install-man
+    man
   install \
     -Dm644 \
     "COPYING" \
