@@ -90,7 +90,7 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 pkgver="0.0.0.0.0.0.0.0.1"
 _commit="25e3780035ffedf321ef7c201bcf0137166d31fd"
-pkgrel=4
+pkgrel=6
 _pkgdesc=(
   "Run system-wide Node.js install."
 )
@@ -162,8 +162,8 @@ _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum='c8160d92be4f33832899951f3717ff81397adebae00366488c9e47407903cbe5'
-_sig_sum='fcce298f0aafc8d11e4a1a5a4211eab6e42297e96fef9cf4df989eae4a16f87d'
+_sum="ff418c933a1d5edc3c00f812b6d34d5b3e59302c581f2fa59183746f1a15c806"
+_sig_sum="6a1620405cf722cd6bf634c5929e86ba45b3681931769462959d912c301b79e5"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
