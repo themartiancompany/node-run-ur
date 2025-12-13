@@ -90,7 +90,7 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 pkgver="0.0.0.0.0.0.0.0.1"
 _commit="25e3780035ffedf321ef7c201bcf0137166d31fd"
-pkgrel=3
+pkgrel=4
 _pkgdesc=(
   "Run system-wide Node.js install."
 )
