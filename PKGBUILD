@@ -48,8 +48,11 @@ fi
 if [[ ! -v "_offline" ]]; then
   _offline="false"
 fi
+if [[ ! -v "_git_service" ]]; then
+  _git_service="gitlab"
+fi
 if [[ ! -v "_git_http" ]]; then
-  _git_http="gitlab"
+  _git_http="${_git_service}"
 fi
 if [[ "${_git_http}" == "github" ]]; then
   _archive_format="zip"
@@ -90,7 +93,7 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 pkgver="0.0.0.0.0.0.0.0.1"
 _commit="25e3780035ffedf321ef7c201bcf0137166d31fd"
-pkgrel=10
+pkgrel=11
 _pkgdesc=(
   "Run system-wide Node.js install."
 )
@@ -162,8 +165,31 @@ _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="ff418c933a1d5edc3c00f812b6d34d5b3e59302c581f2fa59183746f1a15c806"
-_sig_sum="6a1620405cf722cd6bf634c5929e86ba45b3681931769462959d912c301b79e5"
+_github_sum="Skip"
+_github_sig_sum="Skip"
+_gitlab_sum="ff418c933a1d5edc3c00f812b6d34d5b3e59302c581f2fa59183746f1a15c806"
+_gitlab_sig_sum="6a1620405cf722cd6bf634c5929e86ba45b3681931769462959d912c301b79e5"
+
+if [[ "${_evmfs}" == "false" ]]; then
+  if [[ "${_git}" == "false" ]]; then
+    if [[ "${_git_http}" == "github" ]]; then
+      _sum="${_github_sum}"
+      _sig_sum="${_github_sig_sum}"
+    elif [[ "${_git_http}" == "gitlab" ]]; then
+      _sum="${_gitlab_sum}"
+      _sig_sum="${_gitlab_sig_sum}"
+    fi
+  fi
+elif [[ "${_evmfs}" == "true" ]]; then
+  if [[ "${_git}" == "false" ]]; then
+    if [[ "${_git_service}" == "github" ]]; then
+      _sum="${_github_sum}"
+      _sig_sum="${_github_sig_sum}"
+    elif [[ "${_git_service}" == "gitlab" ]]; then
+      _sum="${_gitlab_sum}"
+      _sig_sum="${_gitlab_sig_sum}"
+  fi
+fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
