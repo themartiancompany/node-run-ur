@@ -93,7 +93,7 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 pkgver="0.0.0.0.0.0.0.0.1"
 _commit="25e3780035ffedf321ef7c201bcf0137166d31fd"
-pkgrel=11
+pkgrel=12
 _pkgdesc=(
   "Run system-wide Node.js install."
 )
@@ -165,8 +165,8 @@ _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_github_sum="Skip"
-_github_sig_sum="Skip"
+_github_sum="c8160d92be4f33832899951f3717ff81397adebae00366488c9e47407903cbe5"
+_github_sig_sum="b12562c17ce8506c066d31b99f5b3845387b5cdae357fea98ead4f94d40c3a75"
 _gitlab_sum="ff418c933a1d5edc3c00f812b6d34d5b3e59302c581f2fa59183746f1a15c806"
 _gitlab_sig_sum="6a1620405cf722cd6bf634c5929e86ba45b3681931769462959d912c301b79e5"
 
@@ -188,6 +188,7 @@ elif [[ "${_evmfs}" == "true" ]]; then
     elif [[ "${_git_service}" == "gitlab" ]]; then
       _sum="${_gitlab_sum}"
       _sig_sum="${_gitlab_sig_sum}"
+    fi
   fi
 fi
 _evmfs_network="100"
